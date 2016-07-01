@@ -19,7 +19,8 @@ import {
   Quote,
   Slide,
   Spectacle,
-  Text
+  Text,
+  S
 } from "spectacle";
 
 // Import image preloader util
@@ -38,132 +39,165 @@ require("spectacle/lib/themes/default/index.css");
 
 const images = {
   city: require("../assets/city.jpg"),
-  kat: require("../assets/kat.png"),
+  me: require("../assets/pp.jpg"),
   logo: require("../assets/formidable-logo.svg"),
-  markdown: require("../assets/markdown.png")
+  markdown: require("../assets/markdown.png"),
+  stopSign: require("../assets/stop-sign.jpg"),
+  philosophers: require("../assets/philosophers.png")
 };
 
 preloader(images);
 
 const theme = createTheme({
-  primary: "#ff4081"
+  primary: "#008232"
 });
 
 export default class Presentation extends React.Component {
   render() {
     return (
       <Spectacle theme={theme}>
-        <Deck transition={["zoom", "slide"]} transitionDuration={500}>
+        <Deck progress="bar" transition={["zoom", "slide"]} transitionDuration={250}>
           <Slide transition={["zoom"]} bgColor="primary">
             <Heading size={1} fit caps lineHeight={1} textColor="black">
-              Spectacle
+              Entendiendo JavaScript
             </Heading>
             <Heading size={1} fit caps>
-              A ReactJS Presentation Library
-            </Heading>
-            <Heading size={1} fit caps textColor="black">
-              Where You Can Write Your Decks In JSX
+              Asincronía
             </Heading>
             <Link href="https://github.com/FormidableLabs/spectacle">
-              <Text bold caps textColor="tertiary">View on Github</Text>
+              <Text bold caps textColor="tertiary">Con ejemplos prácticos</Text>
             </Link>
-            <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
           </Slide>
-          <Slide transition={["slide"]} bgColor="black" notes="You can even put notes on your slide. How awesome is that?">
-            <Image src={images.kat.replace("/", "")} margin="0px auto 40px" height="293px"/>
-            <Heading size={2} caps fit textColor="primary" textFont="primary">
-              Wait what?
+          <Slide transition={["slide"]} bgColor="black" notes="Make an afro Joke. Mention you studied in ITESA. Make a point on the fact that you don't come from a high-class/intellectual background. You're some weird guy. ">
+            <Image src={images.me.replace("/", "")} margin="0px auto 40px" height="293px"/>
+            <Heading size={2} caps textColor="primary" textFont="primary">
+              Francis Brito
             </Heading>
-          </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
-            <CodePane
-              lang="jsx"
-              source={require("raw!../assets/deck.example")}
-              margin="20px auto"
-            />
-          </Slide>
-          <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
-            <Appear fid="1">
-              <Heading size={1} caps fit textColor="primary">
-                Full Width
-              </Heading>
-            </Appear>
-            <Appear fid="2">
-              <Heading size={1} caps fit textColor="tertiary">
-                Adjustable Darkness
-              </Heading>
-            </Appear>
-            <Appear fid="3">
-              <Heading size={1} caps fit textColor="primary">
-                Background Imagery
-              </Heading>
-            </Appear>
-          </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="primary">
-            <Heading caps fit>Flexible Layouts</Heading>
-            <Layout>
-              <Fill>
-                <Heading size={4} caps textColor="secondary" bgColor="white" margin={10}>
-                  Left
-                </Heading>
-              </Fill>
-              <Fill>
-                <Heading size={4} caps textColor="secondary" bgColor="white" margin={10}>
-                  Right
-                </Heading>
-              </Fill>
-            </Layout>
-          </Slide>
-          <Slide transition={["slide"]} bgColor="black">
-            <BlockQuote>
-              <Quote>Wonderfully formatted quotes</Quote>
-              <Cite>Ken Wheeler</Cite>
-            </BlockQuote>
-          </Slide>
-          <Slide transition={["spin", "zoom"]} bgColor="tertiary">
-            <Heading caps fit size={1} textColor="primary">
-              Inline Markdown
-            </Heading>
-            <Markdown>
-              {`
-![Markdown Logo](${images.markdown.replace("/", "")})
-
-You can write inline images, [Markdown Links](http://commonmark.org), paragraph text and most other markdown syntax
-* Lists too!
-* With ~~strikethrough~~ and _italic_
-* And lets not forget **bold**
-              `}
-            </Markdown>
-          </Slide>
-          <Slide transition={["slide", "spin"]} bgColor="primary">
-            <Heading caps fit size={1} textColor="tertiary">
-              Smooth
-            </Heading>
-            <Heading caps fit size={1} textColor="secondary">
-              Combinable Transitions
-            </Heading>
-          </Slide>
-          <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
             <List>
-              <Appear><ListItem>Inline style based theme system</ListItem></Appear>
-              <Appear><ListItem>Autofit text</ListItem></Appear>
-              <Appear><ListItem>Flexbox layout system</ListItem></Appear>
-              <Appear><ListItem>React-Router navigation</ListItem></Appear>
-              <Appear><ListItem>PDF export</ListItem></Appear>
-              <Appear><ListItem>And...</ListItem></Appear>
+              <Appear>
+                <ListItem textColor="white">
+                  <S type="strikethrough">Lead de desarrollo Back-end</S> Bombero en <Link href="https://www.instacarro.com/sobrenos.html">InstaCarro.com</Link>
+                </ListItem>
+              </Appear>
+              <Appear>
+                <ListItem textColor="white">Aficionado del desarrollo de software</ListItem>
+              </Appear>
+              <Appear>
+                <ListItem textColor="white">Disfruta de escribir JavaScript</ListItem>
+              </Appear>
+              <Appear>
+                <ListItem textColor="white">Será bailarín algún día</ListItem>
+              </Appear>
             </List>
           </Slide>
-          <Slide transition={["slide"]} bgColor="primary">
-            <Heading size={1} caps fit textColor="tertiary">
-              Your presentations are interactive
-            </Heading>
-            <Interactive/>
+          <Slide transition={["zoom", "fade"]} textColor="white" bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
+            <Heading textColor="white" caps size={2}>Agenda</Heading>
+            <List>
+              <ListItem>
+                ¿Qué quiere decir "asincrono"?
+              </ListItem>
+              <ListItem>
+                ¿Por qué es relevante?
+              </ListItem>
+              <ListItem>
+                ¿Cómo JavaScript lo hace?
+              </ListItem>
+              <ListItem>
+                ¿Como puedo hacer uso de esto?
+              </ListItem>
+              <ListItem>
+              Herramientas utiles
+              </ListItem>
+              <ListItem>
+              Anti-patrones
+              </ListItem>
+              <ListItem>
+              Ejemplos del mundo real
+              </ListItem>
+            </List>
           </Slide>
-          <Slide transition={["spin", "slide"]} bgColor="tertiary">
-            <Heading size={1} caps fit lineHeight={1.5} textColor="primary">
-              Made with love in Seattle by
-            </Heading>
-            <Link href="http://www.formidablelabs.com"><Image width="100%" src={images.logo}/></Link>
+          <Slide transition={["slide"]} notes="Mention concurrency">
+            <Heading size={2} caps fit textColor="white">¿Qué quiere decir "asincrono"?</Heading>
+          </Slide>
+          <Slide bgColor="black">
+            <BlockQuote>
+              <Quote textColor="white" style={ {fontWeight: "300"} }>
+          Asynchrony refers to the <S type="bold">occurrence of events independently of the main program flow</S> and ways to deal with such events.
+              </Quote>
+              <Cite>Wikipedia</Cite>
+            </BlockQuote>
+          </Slide>
+          <Slide transition={["slide"]} notes="Browsers. UX. Talk about blocking. Why block is a bad thing. How does block impacts performance.">
+            <Heading size={2} caps fit textColor="white">¿Por qué es relevante?</Heading>
+          </Slide>
+          <Slide transition={["slide"]} bgImage={images.stopSign.replace("/", "")} bgDarken={0.65}>
+            <Heading size={3} fit italic textColor="white">Blocking</Heading>
+          </Slide>
+          <Slide transition={["slide"]} bgImage={images.philosophers.replace("/", "")} bgDarken={0.65} notes="Multiple tasks making progress at the same time">
+            <Heading size={3} fit italic textColor="white">Concurrency</Heading>
+          </Slide>
+          <Slide transition={["slide"]}>
+            <Heading size={2} caps fit textColor="white" notes="Event-Loop model. Asynchronous APIs.">¿Cómo JavaScript lo hace?</Heading>
+          </Slide>
+          <Slide transition={["slide"]}>
+            <Heading size={2} caps fit textColor="white">¿Cómo puedo hacer uso de esto?</Heading>
+          </Slide>
+          <Slide transition={["slide"]}>
+            <Heading size={3} fit textColor="white">Callbacks</Heading>
+          </Slide>
+          <Slide bgColor="black">
+            <Text textColor="white" fit>Definición</Text>
+          </Slide>
+          <Slide bgColor="#2d2d2d">
+            <CodePane lang="js" source={require("raw!../assets/scripts/callbacks.example")}/>
+          </Slide>
+          <Slide transition={["slide"]}>
+            <CodePane lang="js" source={require("raw!../assets/scripts/callback-drawbacks.example")} />
+          </Slide>
+          <Slide transition={["slide"]}>
+            <Heading size={3} fit textColor="white">Promises</Heading>
+          </Slide>
+          <Slide bgColor="black">
+            <Text textColor="white" fit>Definición</Text>
+          </Slide>
+          <Slide transition={["slide"]}>
+            <Heading size={3} fit textColor="white">Streams</Heading>
+          </Slide>
+          <Slide bgColor="black" notes="An array laid out in time">
+            <Text textColor="white" fit>Definición</Text>
+          </Slide>
+          <Slide transition={["slide"]}>
+            <Heading size={3} fit textColor="white">Web Workers</Heading>
+          </Slide>
+          <Slide bgColor="black" notes="Mechanism to spawn threads on the web">
+            <Text textColor="white" fit>Definición</Text>
+          </Slide>
+          <Slide transition={["slide"]}>
+            <Heading size={3} fit textColor="white">ES2015: Generators</Heading>
+          </Slide>
+          <Slide bgColor="black">
+            <Text textColor="white" fit>Definición</Text>
+          </Slide>
+          <Slide bgColor="white">
+            <Text fit>Desventajas</Text>
+            <List>
+              <ListItem>Toma algo de tiempo entenderlos</ListItem>
+            </List>
+          </Slide>
+          <Slide transition={["slide"]}>
+            <Heading size={3} fit textColor="white">ESNEXT (Stage 3): `async` functions</Heading>
+          </Slide>
+          <Slide bgColor="black">
+            <Text textColor="white" fit>Definición</Text>
+          </Slide>
+          <Slide transition={["slide"]}>
+            <Heading size={2} caps fit textColor="white">Herramientas utiles</Heading>
+          </Slide>
+          <Slide transition={["slide"]}>
+            <Heading size={2} caps fit textColor="white">Anti-patrones</Heading>
+          </Slide>
+          <Slide transition={["slide"]}>
+            <Heading size={2} caps fit textColor="white">Ejemplos del mundo real</Heading>
           </Slide>
         </Deck>
       </Spectacle>

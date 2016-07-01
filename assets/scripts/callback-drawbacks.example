@@ -1,0 +1,35 @@
+/* eslint-disable */
+const bcrypt = require('bcrypt');
+const mongodb = require('mongodb');
+
+mongodb.MongoClient.connect(process.env.DB_URI, function(err, db) {
+  if (err) throw err;
+
+  db.collection('users').find({ email: 'slumlord@neonindian.music' }, function(erro, user) {
+    if (erro) throw erro;
+
+    bcrypt.compare('polishgirl', user.password, function(errp, matchesPassword) {
+      if (errp) throw errp;
+
+      if (matchesPassword) {
+        sendEmail(user.email, 'Isle of Light was a blast!', function(errq, response) {
+          if (response.isBounce) {
+            db.collection('users').update(user, {
+              $set: {
+                'preferences.meta.can_be_reached_by_email': false,
+              }
+            }, function(errs, updateResult) {
+              if (updateResult.ok) {
+                sendNotification(user.id, 'E-mail unreachable. Notification by email was disabled. Change your email address in preferences tab.', function(errs) {
+                  if (errs) throw errs;
+
+                  // THIS IS INSANE.
+                });
+              }
+            });
+          }
+        });
+      }
+    });
+  });
+});

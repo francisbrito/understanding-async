@@ -1,0 +1,38 @@
+function onFormSubmission(e) {
+  e.preventDefault();
+
+  console.log('form submitted');
+}
+
+// Here `onFormSubmission` is being used as a callback.
+document.querySelector('form').addEventListener('submit', onFormSubmission);
+
+// ----
+
+const http = require('http');
+
+// Here the anonymous `(request, response) => ...` arrow function is being used as a ballback.
+// NOTE: ES2015 syntax.
+http.createServer((request, response) => {
+  const body = '<h1>Hello World!</h1>';
+
+  response.writeHead(200, {
+    'Content-Type': 'text/html',
+    'Content-Length': Buffer.byteLength(body),
+  });
+
+  response.end(body);
+});
+
+// ----
+const throttle = require('throttle');
+const filesystem = require('fs');
+
+filesystem
+  .createReadStream('/dev/urandom')
+  .pipe(throttle(512)) // 512 bps
+  .on('data', function(buffer) {
+    const bufferAsHexString = buffer.toString('hex');
+
+    console.log(`got ${bufferAsHexString} (${Buffer.byteLength(buffer)})`);
+  });
